@@ -38,8 +38,8 @@ jobs:
       run: |
         echo "$PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
-        scp -o StrictHostKeyChecking=no -i private_key.pem -r .next static public package.json package-lock.json ${USER}@${HOST}:/var/php/nextjs
-        ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER}@${HOST} << 'EOF'
+        sudo scp -o StrictHostKeyChecking=no -i private_key.pem -r .next static public package.json package-lock.json ${USER}@${HOST}:/var/php/nextjs
+        sudo ssh -o StrictHostKeyChecking=no -i private_key.pem ${USER}@${HOST} << 'EOF'
         cd /var/php/nextjs
         sudo npm install --production
         sudo pm2 delete all || true
