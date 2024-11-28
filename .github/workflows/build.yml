@@ -1,33 +1,37 @@
-# .github/workflows/build.yml
-name: Build Next.js Application
-
+name: Build and Deploy Next.js Application
 on:
   push:
     branches:
       - main
   pull_request:
-
 jobs:
   deploy:
     runs-on: self-hosted
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
-
+    
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 18
-
+    
     - name: Install dependencies
       run: npm install
-
+    
+    - name: Install PM2 globally
+      run: npm install -g pm2
+    
     - name: Build application
       run: npm run build
-
+    
     - name: Archive build folder
       uses: actions/upload-artifact@v3
       with:
         name: nextjs-build
         path: .next
+    
+    - name: Start application with PM2
+      run: |
+        pm2 delete all || true
+        pm2 start npm --name "nextjs-app" -- start
