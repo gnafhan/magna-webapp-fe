@@ -6,10 +6,10 @@ services:
       context: ./
       target: dev
       dockerfile: Dockerfile
-    volumes:
-        - .:/app
-        - /app/node_modules
-        - /app/.next
     restart: unless-stopped
     ports:
       - "3000:3000"
+  volumes:
+        - .:/app
+        - /app/node_modules
+        - /app/.next
