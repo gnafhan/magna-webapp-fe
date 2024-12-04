@@ -10,5 +10,6 @@ services:
         - .:/app
         - /app/node_modules
         - /app/.next
+    restart: unless-stopped
     ports:
       - "3000:3000"
