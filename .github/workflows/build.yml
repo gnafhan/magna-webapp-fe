@@ -15,6 +15,13 @@ jobs:
 
     - name: Build and start services
       run: |
+        if [ "$(sudo docker ps -q)" ]; then
+          echo "Stopping existing containers"
+          sudo docker compose down
+        else
+          echo "No running containers found"
+        fi
+        
         sudo docker-compose build
         sudo docker-compose up -d
     
