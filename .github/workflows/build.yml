@@ -15,14 +15,6 @@ jobs:
 
     - name: Build and start services
       run: |
-        # Check if docker-compose is already running
-        if [ "$(docker ps -q)" ]; then
-          echo "Stopping existing containers"
-          docker compose down
-        else
-          echo "No running containers found"
-        fi
-        
         docker-compose build
         docker-compose up -d
     
