@@ -1,15 +1,9 @@
-version: '3.8'
+version: '3.9'
+
 services:
-  app:
-    image: magna-fe
-    build:
-      context: ./
-      target: dev
-      dockerfile: Dockerfile
-    restart: unless-stopped
+  nextapp:
+    container_name: nextapp
+    image: nextapp
+    build: .
     ports:
       - "3000:3000"
-  volumes:
-        - .:/app
-        - /app/node_modules
-        - /app/.next
