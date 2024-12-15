@@ -26,7 +26,6 @@ export default function CvReviewerNavbar() {
           alt="Magna Logo"
           width={30}
           height={56}
-          style={{ width: "auto", height: "auto" }}
         />
 
         <div className="md:text-[24px] text-[18px] font-extrabold">
