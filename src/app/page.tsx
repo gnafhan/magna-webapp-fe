@@ -44,7 +44,7 @@ export default function Home() {
             alt="Magna Logo"
             width={30}
             height={56}
-            style={{ width: "auto", height: "auto" }}
+            className="w-8 h-8"
           />
 
           <div className="md:text-[24px] text-[18px] font-extrabold">
